@@ -10,6 +10,7 @@
     using Models;
     using Newtonsoft.Json;
     using Xamarin.Forms;
+    using ForeignExchange4.Helpers;
 
     public class MainViewModel : INotifyPropertyChanged
     {
@@ -153,7 +154,7 @@
         async void LoadRates()
         {
             IsRunning = true;
-            Result = "Loading rates...";
+            Result = Lenguages.Loading;
 
             try
             {
@@ -174,7 +175,7 @@
 
                 IsRunning = false;
                 IsEnabled = true;
-                Result = "Ready to convert!";
+                Result = Lenguages.Ready;
             }
             catch (Exception ex)
             {
@@ -214,9 +215,9 @@
             if (string.IsNullOrEmpty(Amount))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter a value in amount.",
-                    "Accept");
+                    Lenguages.Error,
+                    Lenguages.AmountValidation,
+                    Lenguages.Accept);
                 return;
             }
 
@@ -224,27 +225,27 @@
             if (!decimal.TryParse(Amount, out amount))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter a numeric value in amount.",
-                    "Accept");
+                    Lenguages.Error,
+                    Lenguages.AmountValidation,
+                    Lenguages.Accept);
                 return;
             }
 
             if (SourceRate == null)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must select a source rate.",
-                    "Accept");
+                    Lenguages.Error,
+                    Lenguages.SourceRateValidation,
+                    Lenguages.Accept);
                 return;
             }
 
             if (TargetRate == null)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must select a target rate.",
-                    "Accept");
+                    Lenguages.Error,
+                    Lenguages.TargetRateValidation,
+                    Lenguages.Accept);
                 return;
             }
 
