@@ -180,6 +180,16 @@
             IsRunning = true;
             Result = Lenguages.Loading;
 
+            var connection = await apiService.CheckConnection();
+            if(!connection.IsSuccess)
+            {
+                IsRunning = false;
+                Result = connection.Message;
+                return;
+            }
+
+
+
             var response = await apiService.GetList<Rate>(
                 "http://apiexchangerates.azurewebsites.net",
                 "api/Rates");
@@ -195,6 +205,7 @@
             IsRunning = false;
             IsEnabled = true;
             Result = Lenguages.Ready;
+            Status = Lenguages.StatusRateValidation;
         }
         #endregion
 

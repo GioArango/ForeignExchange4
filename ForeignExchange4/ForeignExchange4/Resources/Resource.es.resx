@@ -138,6 +138,12 @@
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="InternetConnectionValidation" xml:space="preserve">
+    <value>Comprueba tu conexión a Internet</value>
+  </data>
+  <data name="InternetSettingsValidation" xml:space="preserve">
+    <value>Revisa tu configuración de internet</value>
+  </data>
   <data name="Loading" xml:space="preserve">
     <value>Cargando monedas...</value>
   </data>
@@ -152,6 +158,9 @@
   </data>
   <data name="SourceRateValidation" xml:space="preserve">
     <value>Debes seleccionar una moneda origen.</value>
+  </data>
+  <data name="StatusRateValidation" xml:space="preserve">
+    <value>Tarifas cargadas desde internet.</value>
   </data>
   <data name="TargetRateLabel" xml:space="preserve">
     <value>Moneda destino:</value>

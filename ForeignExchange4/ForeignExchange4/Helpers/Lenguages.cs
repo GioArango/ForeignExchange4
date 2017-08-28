@@ -92,6 +92,21 @@
         {
             get { return Resource.Ready; }
         }
+
+        public static string InternetConnectionValidation
+        {
+            get { return Resource.InternetConnectionValidation; }
+        }
+
+        public static string InternetSettingsValidation
+        {
+            get { return Resource.InternetSettingsValidation; }
+        }
+
+        public static string StatusRateValidation
+        {
+            get { return Resource.StatusRateValidation; }
+        }
     }
 
 }

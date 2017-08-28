@@ -138,6 +138,12 @@
   <data name="Error" xml:space="preserve">
     <value>Erreur</value>
   </data>
+  <data name="InternetConnectionValidation" xml:space="preserve">
+    <value>Vérifiez votre connection internet</value>
+  </data>
+  <data name="InternetSettingsValidation" xml:space="preserve">
+    <value>Vérifiez vos paramètres Internet</value>
+  </data>
   <data name="Loading" xml:space="preserve">
     <value>Tarifs de chargement ...</value>
   </data>
@@ -152,6 +158,9 @@
   </data>
   <data name="SourceRateValidation" xml:space="preserve">
     <value>Vous devez sélectionner un taux source.</value>
+  </data>
+  <data name="StatusRateValidation" xml:space="preserve">
+    <value>Tarifs chargés sur Internet.</value>
   </data>
   <data name="TargetRateLabel" xml:space="preserve">
     <value>Taux cible :</value>

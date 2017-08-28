@@ -125,6 +125,24 @@ namespace ForeignExchange4.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check your internet connection..
+        /// </summary>
+        public static string InternetConnectionValidation {
+            get {
+                return ResourceManager.GetString("InternetConnectionValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check your internet settings..
+        /// </summary>
+        public static string InternetSettingsValidation {
+            get {
+                return ResourceManager.GetString("InternetSettingsValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loading rates....
         /// </summary>
         public static string Loading {
@@ -166,6 +184,15 @@ namespace ForeignExchange4.Resources {
         public static string SourceRateValidation {
             get {
                 return ResourceManager.GetString("SourceRateValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rates loaded from internet..
+        /// </summary>
+        public static string StatusRateValidation {
+            get {
+                return ResourceManager.GetString("StatusRateValidation", resourceCulture);
             }
         }
         
