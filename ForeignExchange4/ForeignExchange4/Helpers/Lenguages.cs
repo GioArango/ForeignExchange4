@@ -107,6 +107,21 @@
         {
             get { return Resource.StatusRateValidation; }
         }
+
+        public static string RateValidationNull
+        {
+            get { return Resource.RateValidationNull; }
+        }
+        
+        public static string LoadDataLocalRate
+        {
+            get { return Resource.LoadDataLocalRate; }
+        }
+
+        public static string NoRateLoaded
+        {
+            get { return Resource.NoRateLoaded; }
+        }
     }
 
 }

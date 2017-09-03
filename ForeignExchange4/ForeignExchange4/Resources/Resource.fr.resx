@@ -144,8 +144,17 @@
   <data name="InternetSettingsValidation" xml:space="preserve">
     <value>Vérifiez vos paramètres Internet</value>
   </data>
+  <data name="LoadDataLocalRate" xml:space="preserve">
+    <value>taux de chargement à partir de données locales</value>
+  </data>
   <data name="Loading" xml:space="preserve">
     <value>Tarifs de chargement ...</value>
+  </data>
+  <data name="NoRateLoaded" xml:space="preserve">
+    <value>pas de frais facturés</value>
+  </data>
+  <data name="RateValidationNull" xml:space="preserve">
+    <value>Il n'y a pas de connexion internet et ne charge pas les tarifs précédents. Veuillez réessayer avec la connexion Internet.</value>
   </data>
   <data name="Ready" xml:space="preserve">
     <value>Prêt à convertir !</value>

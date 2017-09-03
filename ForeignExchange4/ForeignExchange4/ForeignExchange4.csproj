@@ -35,10 +35,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ApiService.cs" />
+    <Compile Include="Services\ApiService.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\DataAccess.cs" />
     <Compile Include="Helpers\Lenguages.cs" />
     <Compile Include="Helpers\PlatformCulture.cs" />
     <Compile Include="Helpers\TranslateExtension.cs" />
@@ -56,6 +57,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\DataServices.cs" />
+    <Compile Include="Services\DialogService.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>

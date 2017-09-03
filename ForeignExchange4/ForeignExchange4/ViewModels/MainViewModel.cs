@@ -11,6 +11,8 @@
     using Newtonsoft.Json;
     using Xamarin.Forms;
     using ForeignExchange4.Helpers;
+    using ForeignExchange4.Services;
+    using System.Threading.Tasks;
 
     public class MainViewModel : INotifyPropertyChanged
     {
@@ -20,6 +22,8 @@
 
         #region Services
         ApiService apiService;
+        DialogService dialogServices;
+        DataService dataServices;
         #endregion
 
         #region Attributes
@@ -30,6 +34,7 @@
         Rate _sourceRate;
         Rate _targetRate;
         string _status;
+        List<Rate> rates;
         #endregion
 
         #region Properties
@@ -170,6 +175,9 @@
         public MainViewModel()
         {
             apiService = new ApiService();
+            dataServices = new DataService();
+            dialogServices = new DialogService();
+
             LoadRates();
         }
         #endregion
@@ -181,30 +189,58 @@
             Result = Lenguages.Loading;
 
             var connection = await apiService.CheckConnection();
-            if(!connection.IsSuccess)
+
+            if (!connection.IsSuccess)
             {
-                IsRunning = false;
-                Result = connection.Message;
-                return;
+                LoadLocalData();
+            }
+            else
+            {
+                await LoadDataFromAPI();
             }
 
+            if (rates.Count == 0)
+            {
+                IsRunning = false;
+                IsEnabled = false;
+                Result = Lenguages.RateValidationNull;
+                Status = Lenguages.NoRateLoaded;
+                return;
+            }
+           
+            Rates = new ObservableCollection<Rate>(rates);
 
+            IsRunning = false;
+            IsEnabled = true;
+            Result = Lenguages.Ready;
+            Status = Lenguages.StatusRateValidation;
+        }
+
+        private void LoadLocalData()
+        {
+            rates = dataServices.Get<Rate>(false);
+            Status = Lenguages.LoadDataLocalRate;
+        }
+
+        async Task LoadDataFromAPI()
+        {
+            var url = "http://apiexchangerates.azurewebsites.net"; //Application.Current.Resources["URLAPI"].ToString();
 
             var response = await apiService.GetList<Rate>(
-                "http://apiexchangerates.azurewebsites.net",
+                url,
                 "api/Rates");
 
             if (!response.IsSuccess)
             {
-                IsRunning = false;
-                Result = response.Message;
+                LoadLocalData();
                 return;
             }
 
-            Rates = new ObservableCollection<Rate>((List<Rate>)response.Result);
-            IsRunning = false;
-            IsEnabled = true;
-            Result = Lenguages.Ready;
+            // Storage data local 
+            rates = (List<Rate>)response.Result;
+            dataServices.DeleteAll<Rate>();
+            dataServices.Save(rates);
+
             Status = Lenguages.StatusRateValidation;
         }
         #endregion
@@ -238,38 +274,34 @@
         {
             if (string.IsNullOrEmpty(Amount))
             {
-                await Application.Current.MainPage.DisplayAlert(
+                await dialogServices.ShowMessage(
                     Lenguages.Error,
-                    Lenguages.AmountValidation,
-                    Lenguages.Accept);
+                    Lenguages.AmountValidation);
                 return;
             }
 
             decimal amount = 0;
             if (!decimal.TryParse(Amount, out amount))
             {
-                await Application.Current.MainPage.DisplayAlert(
+                await dialogServices.ShowMessage(
                     Lenguages.Error,
-                    Lenguages.AmountValidation,
-                    Lenguages.Accept);
+                    Lenguages.AmountValidation);
                 return;
             }
 
             if (SourceRate == null)
             {
-                await Application.Current.MainPage.DisplayAlert(
+                await dialogServices.ShowMessage(
                     Lenguages.Error,
-                    Lenguages.SourceRateValidation,
-                    Lenguages.Accept);
+                    Lenguages.SourceRateValidation);
                 return;
             }
 
             if (TargetRate == null)
             {
-                await Application.Current.MainPage.DisplayAlert(
+                await dialogServices.ShowMessage(
                     Lenguages.Error,
-                    Lenguages.TargetRateValidation,
-                    Lenguages.Accept);
+                    Lenguages.TargetRateValidation);
                 return;
             }
 

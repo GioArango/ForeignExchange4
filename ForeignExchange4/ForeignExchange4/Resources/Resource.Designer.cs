@@ -143,11 +143,38 @@ namespace ForeignExchange4.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rates loaded from local data..
+        /// </summary>
+        public static string LoadDataLocalRate {
+            get {
+                return ResourceManager.GetString("LoadDataLocalRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loading rates....
         /// </summary>
         public static string Loading {
             get {
                 return ResourceManager.GetString("Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no rates loaded..
+        /// </summary>
+        public static string NoRateLoaded {
+            get {
+                return ResourceManager.GetString("NoRateLoaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are not internet connection  and not load previous rates. Please try again with internet connection..
+        /// </summary>
+        public static string RateValidationNull {
+            get {
+                return ResourceManager.GetString("RateValidationNull", resourceCulture);
             }
         }
         

@@ -43,6 +43,7 @@
                     Grid.Column="1"
                     Grid.Row="0"
                     Grid.ColumnSpan="2"
+                    Keyboard="Numeric"
                     Text="{Binding Amount, Mode=TwoWay}"
                     Placeholder="{i18n:Translate AmountPlaceHolder}">
                 </Entry>
@@ -116,8 +117,7 @@
             </Label>
             <Label
                 HorizontalOptions="Center"
-                Text="{Binding Status, Mode=TwoWay}">
-                
+                Text="{Binding Status, Mode=TwoWay}">                
             </Label>
         </StackLayout>
     </ContentPage.Content>

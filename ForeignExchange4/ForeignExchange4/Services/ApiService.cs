@@ -22,15 +22,15 @@
                 };
             }
 
-            var response = await CrossConnectivity.Current.IsRemoteReachable("google.com");
-            if (!response)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = Lenguages.InternetConnectionValidation,
-                };
-            }
+            //var response = await CrossConnectivity.Current.IsRemoteReachable("google.com");
+            //if (!response)
+            //{
+            //    return new Response
+            //    {
+            //        IsSuccess = false,
+            //        Message = Lenguages.InternetConnectionValidation,
+            //    };
+            //}
 
             return new Response
             {
